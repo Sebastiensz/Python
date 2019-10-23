@@ -25,9 +25,6 @@ def extract_frames_for_video_at_intervals(video_path, interval, out_directory_pa
         clip.save_frame(out_path, (time_counter))
 
         if i==500:
-
             break
-
         else:
-
             pass 

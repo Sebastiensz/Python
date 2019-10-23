@@ -1,2 +1,1 @@
-feat = arcgis.features.feature.Feature()
-feat.geometry = {'x': int_pos_x, 'y': int_pos_y, 'spatialReference': {'wkid':4326}}
+feat.attributes={'LongitudinalCrackCount' : lon_cracks_count,'LateralCrackCount' : lat_cracks_count,'AlligatorCrackCount' : allig_cracks_count,'OtherCorruptionCount' : othcorr_count}

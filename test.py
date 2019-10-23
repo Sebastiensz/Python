@@ -1,13 +1,33 @@
-detection_graph = tf.Graph()
-detection_graph = tf.Graph()
-with detection_graph.as_default():
+def extract_frames_for_video_at_intervals(video_path, interval, out_directory_path):
 
-    od_graph_def = tf.GraphDef()
+    clip = mpy.VideoFileClip(video_path)
 
-    with tf.gfile.GFile(PATH_TO_CKPT, 'rb') as fid:
+    iterations = int(clip.duration / interval)
 
-        serialized_graph = fid.read()
+    time_counter = 0
 
-        od_graph_def.ParseFromString(serialized_graph)
+    i=0
 
-        tf.import_graph_def(od_graph_def, name='')
+    for iteration in range(iterations):
+
+        time_counter += interval
+
+        i=i+1
+
+        print("Exporting image at {0} seconds...".format(str(time_counter)))
+
+        #file_name = "Video_{0}.png".format(str(time_counter))
+
+        file_name = "Video_{0}.png".format(i)
+
+        out_path = os.path.join(out_directory_path, file_name)
+
+        clip.save_frame(out_path, (time_counter))
+
+        if i==500:
+
+            break
+
+        else:
+
+            pass 
